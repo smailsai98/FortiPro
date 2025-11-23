@@ -47,12 +47,7 @@ function Header() {
               >
                 Commander
               </Link>
-              <Link 
-                href="/ArwahTekhdem" 
-                className="text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
-              >
-                Get started
-              </Link>
+            
             </nav>
 
             {/* Desktop Badge */}
