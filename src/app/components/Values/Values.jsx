@@ -148,7 +148,7 @@ export default function WhoCanUse() {
               whileHover="hover"
             >
               <motion.img  
-                src="https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                src="https://images.unsplash.com/photo-1633219664572-473fd988a44f?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Récupération et convalescence" 
                 className="w-full object-cover aspect-video" 
                 variants={{ hover: { scale: 1.05 } }} 

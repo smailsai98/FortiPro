@@ -13,7 +13,7 @@ function ImageLogo() {
           {/* Image Section */}
           <div className="w-full lg:w-2/5 relative overflow-hidden rounded-2xl shadow-xl h-[400px] sm:h-[500px] lg:h-auto lg:min-h-[550px]">
             <img
-              src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
+              src="https://images.unsplash.com/photo-1576602976047-174e57a47881?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Gym with FortiPro products"
               className="w-full h-full object-cover absolute inset-0"
             />

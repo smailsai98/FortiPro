@@ -2,14 +2,13 @@
 
 import { useState } from 'react';
 import { User, MapPin, Mail, Building, Phone, ShoppingCart, Heart, Truck, X, CheckCircle } from 'lucide-react';
-import { Poppins } from "next/font/google";
-
-const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] });
 
 const flavours = [
-  { id: 'vanille', name: 'Vanille', color: 'from-amber-400 to-yellow-300' },
-  { id: 'chocolat', name: 'Chocolat', color: 'from-amber-700 to-amber-500' },
-  { id: 'fraise', name: 'Fraise', color: 'from-pink-500 to-red-400' }
+  { id: 'Biscuit', name: 'Biscuit', color: 'from-amber-400 to-brown-300' },
+  { id: 'Chocolat', name: 'Chocolat', color: 'from-amber-700 to-amber-500' },
+  { id: 'Fraise', name: 'Fraise', color: 'from-pink-500 to-red-400' },
+  { id: 'Banane', name: 'Banane', color: 'from-yellow-500 to-yellow-400' },
+  { id: 'Melange', name: 'Mélange', color: 'from-white-500 to-white' }
 ];
 
 const wilayas = [
@@ -31,14 +30,17 @@ export default function FortiProSales() {
     email: '',
     telephone: '',
     saveurs: {
-      vanille: 0,
-      chocolat: 0,
-      fraise: 0
+      Biscuit: 0,
+      Chocolat: 0,
+      Fraise: 0,
+      Banane: 0,
+      Melange: 0
     }
   });
 
   const [showModal, setShowModal] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -75,32 +77,92 @@ export default function FortiProSales() {
     setShowModal(true);
   };
 
-  const handleConfirmOrder = () => {
-    setShowModal(false);
-    setShowConfirmation(true);
+  const generateOrderId = () => {
+    return 'FP' + Date.now().toString().slice(-8);
+  };
 
-    // Hide confirmation after 3 seconds
-    setTimeout(() => {
-      setShowConfirmation(false);
-      // Reset form
-      setFormData({
-        nom: '',
-        prenom: '',
-        adresse: '',
-        wilaya: '',
-        email: '',
-        telephone: '',
-        saveurs: {
-          vanille: 0,
-          chocolat: 0,
-          fraise: 0
-        }
+  const sendEmail = async () => {
+    setIsSending(true);
+    
+    const orderId = generateOrderId();
+    
+    // Build order items list
+    const orderItems = flavours
+      .filter(f => formData.saveurs[f.id] > 0)
+      .map(f => `FortiPro ${f.name}: ${formData.saveurs[f.id]} carton${formData.saveurs[f.id] > 1 ? 's' : ''}`)
+      .join('\n');
+
+    // EmailJS template parameters
+    const templateParams = {
+      order_id: orderId,
+      customer_name: `${formData.prenom} ${formData.nom}`,
+      customer_email: formData.email || 'Non fourni',
+      customer_phone: formData.telephone,
+      customer_address: `${formData.adresse}, ${formData.wilaya}`,
+      order_items: orderItems,
+      total_cartons: getTotalCartons(),
+      order_date: new Date().toLocaleDateString('fr-DZ', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      })
+    };
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const SERVICE_ID = 'service_2zpnwqh';
+      const TEMPLATE_ID = 'template_hr46ndl';
+      const PUBLIC_KEY = '0SAtNKzxBwLv5Wwwl';
+
+      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          service_id: SERVICE_ID,
+          template_id: TEMPLATE_ID,
+          user_id: PUBLIC_KEY,
+          template_params: templateParams
+        })
       });
-    }, 3000);
+
+      if (response.ok) {
+        setShowModal(false);
+        setShowConfirmation(true);
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setShowConfirmation(false);
+          setFormData({
+            nom: '',
+            prenom: '',
+            adresse: '',
+            wilaya: '',
+            email: '',
+            telephone: '',
+            saveurs: {
+              Biscuit: 0,
+              Chocolat: 0,
+              Fraise: 0,
+              Banane: 0,
+              Melange: 0
+            }
+          });
+        }, 3000);
+      } else {
+        throw new Error('Email sending failed');
+      }
+    } catch (error) {
+      console.error('Email error:', error);
+      alert('Erreur lors de l\'envoi de l\'email. Veuillez réessayer.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden px-4 sm:px-6 lg:px-12 ${poppins.className}`}>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden px-4 sm:px-6 lg:px-12">
       {/* Animated Grid Pattern Background */}
       <div className="absolute inset-0 opacity-20">
         <div
@@ -150,7 +212,7 @@ export default function FortiProSales() {
               </span>
             </h2>
             <p className="text-lg text-white/80 max-w-md">
-              Une formule nutritionnelle complète et équilibrée, disponible en trois délicieuses saveurs pour répondre à vos besoins quotidiens.
+              Une formule nutritionnelle complète et équilibrée, disponible en cinq délicieuses saveurs pour répondre à vos besoins quotidiens.
             </p>
           </div>
 
@@ -176,8 +238,7 @@ export default function FortiProSales() {
               <div className="space-y-2">
                 <label className="text-white font-medium text-sm">Nom *</label>
                 <div className="relative group">
-                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10 group-focus-within:text-purple-400 transition-colors" />
-                  <input
+  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10 group-focus-within:text-purple-400 transition-colors" />                  <input
                     type="text"
                     name="nom"
                     placeholder="Votre nom"
@@ -258,9 +319,9 @@ export default function FortiProSales() {
               </div>
             </div>
 
-            {/* Email (optional) */}
+            {/* Email */}
             <div className="space-y-2">
-              <label className="text-white font-medium text-sm">Email (optionnel)</label>
+              <label className="text-white font-medium text-sm">Email *</label>
               <div className="relative group">
                 <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10 group-focus-within:text-purple-400 transition-colors" />
                 <input
@@ -272,6 +333,7 @@ export default function FortiProSales() {
                   className="w-full pl-12 pr-4 h-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl text-white placeholder:text-gray-400 focus:bg-white/10 focus:border-purple-400/50 focus:outline-none focus:ring-2 focus:ring-purple-400/30 transition-all duration-300"
                 />
               </div>
+              <p className="text-sm text-purple-300">* Requis pour recevoir la confirmation de commande</p>
             </div>
 
             {/* Saveurs Selection */}
@@ -340,7 +402,7 @@ export default function FortiProSales() {
         <div className="lg:flex-1 relative w-full max-w-xl lg:max-w-full">
           <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 group">
             <img
-              src="https://images.pexels.com/photos/5946081/pexels-photo-5946081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?q=80&w=765&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="FortiPro Nutrition"
               className="w-full h-64 sm:h-80 lg:h-[500px] object-cover group-hover:scale-110 transition-transform duration-700"
             />
@@ -422,12 +484,10 @@ export default function FortiProSales() {
                     <p className="text-sm text-white/60">Adresse</p>
                     <p className="font-medium">{formData.adresse}, {formData.wilaya}</p>
                   </div>
-                  {formData.email && (
-                    <div className="sm:col-span-2">
-                      <p className="text-sm text-white/60">Email</p>
-                      <p className="font-medium">{formData.email}</p>
-                    </div>
-                  )}
+                  <div className="sm:col-span-2">
+                    <p className="text-sm text-white/60">Email</p>
+                    <p className="font-medium">{formData.email}</p>
+                  </div>
                 </div>
               </div>
 
@@ -460,12 +520,22 @@ export default function FortiProSales() {
 
               {/* Confirmation Button */}
               <button
-                onClick={handleConfirmOrder}
-                className="w-full h-14 bg-gradient-to-r from-green-600 to-green-500 hover:shadow-2xl hover:shadow-green-500/25 text-white font-semibold text-lg rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg"
+                onClick={sendEmail}
+                disabled={isSending}
+                className="w-full h-14 bg-gradient-to-r from-green-600 to-green-500 hover:shadow-2xl hover:shadow-green-500/25 text-white font-semibold text-lg rounded-full transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="flex items-center justify-center gap-2">
-                  <CheckCircle className="w-5 h-5" />
-                  Confirmer la commande
+                  {isSending ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    <>
+                      <CheckCircle className="w-5 h-5" />
+                      Confirmer la commande
+                    </>
+                  )}
                 </span>
               </button>
             </div>
@@ -483,7 +553,10 @@ export default function FortiProSales() {
               </div>
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">Commande confirmée !</h2>
-            <p className="text-white/90 text-lg">
+            <p className="text-white/90 text-lg mb-2">
+              Un email de confirmation a été envoyé à votre adresse.
+            </p>
+            <p className="text-white/80 text-base">
               Nous vous contacterons bientôt pour finaliser votre commande.
             </p>
           </div>
