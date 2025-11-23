@@ -41,10 +41,10 @@ function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-4">Nos Produits</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/products/classic" className="text-gray-400 hover:text-white transition-colors">FortiPro Classic</Link></li>
-              <li><Link href="/products/energy" className="text-gray-400 hover:text-white transition-colors">FortiPro Energy</Link></li>
-              <li><Link href="/products/recovery" className="text-gray-400 hover:text-white transition-colors">FortiPro Recovery</Link></li>
-              <li><Link href="/products" className="text-gray-400 hover:text-white transition-colors">Tous les produits</Link></li>
+              <li><Link href="/Ride" className="text-gray-400 hover:text-white transition-colors">FortiPro Classic</Link></li>
+              <li><span className="text-gray-600 cursor-not-allowed">FortiPro Energy</span></li>
+              <li><span className="text-gray-600 cursor-not-allowed">FortiPro Recovery</span></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Tous les produits</Link></li>
             </ul>
           </div>
 
@@ -52,10 +52,10 @@ function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-4">Partenaires</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/partners/distributor" className="text-gray-400 hover:text-white transition-colors">Devenir Distributeur</Link></li>
-              <li><Link href="/partners/gym" className="text-gray-400 hover:text-white transition-colors">Salles de Sport</Link></li>
-              <li><Link href="/partners/health" className="text-gray-400 hover:text-white transition-colors">Professionnels de Santé</Link></li>
-              <li><Link href="/b2b" className="text-gray-400 hover:text-white transition-colors">B2B / Grossistes</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Devenir Distributeur</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Salles de Sport</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Professionnels de Santé</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">B2B / Grossistes</Link></li>
             </ul>
           </div>
 
@@ -63,10 +63,10 @@ function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-4">Entreprise</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">À propos</Link></li>
-              <li><Link href="/blog" className="text-gray-400 hover:text-white transition-colors">Blog Nutrition</Link></li>
-              <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">À propos</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Blog Nutrition</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link href="/" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
         </div>
@@ -80,9 +80,9 @@ function Footer() {
 
           {/* Legal Links */}
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">Confidentialité</Link>
-            <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">CGV</Link>
-            <Link href="/cookies" className="text-gray-400 hover:text-white transition-colors">Cookies</Link>
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">Confidentialité</Link>
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">CGV</Link>
+            <Link href="/" className="text-gray-400 hover:text-white transition-colors">Cookies</Link>
           </div>
 
           {/* Social Links */}

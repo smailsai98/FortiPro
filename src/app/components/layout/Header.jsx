@@ -72,12 +72,12 @@ function Header() {
         <nav className="bg-white border-t border-gray-100 shadow-lg">
           <div className="w-full flex justify-center">
             <div className="w-full max-w-3xl px-4 sm:px-6 py-4 space-y-1">
-              <MobileDropdown 
-                title="Services" 
-                items={["Yassir Ride", "Yassir Food", "Yassir Grocery", "Order for someone else"]} 
-              />
-              <MobileDropdown title="Partners" items={["Drive with Us", "Sell with Us", "Deliver with Us"]} />
-              <MobileDropdown title="About us" items={["Business", "Careers"]} />
+              <Link 
+                href="/Ride" 
+                className="block py-2 text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
+              >
+                Commander
+              </Link>
               
               <div className="pt-3 mt-3 border-t border-gray-100">
                 <Badge text="English" color="bg-purple-700" />

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Poppins } from "next/font/google";
 import { Dumbbell, Leaf, Zap, Shield, FlaskConical } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Values from "./components/Values/Values";
 import ImageLogo from "./components/Image/ImageLogo";
 
@@ -124,9 +125,11 @@ export default function Home() {
               Ajoutez de l&#39;eau, secouez, savourez. FortiPro vous apporte tous les nutriments essentiels en quelques secondes.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6">
-              <button className="text-white rounded-full text-sm font-semibold bg-purple-700 py-3 px-6 hover:bg-purple-600 transition-colors">
-                Commander maintenant
-              </button>
+              <Link href="/Ride">
+                <button className="text-white rounded-full text-sm font-semibold bg-purple-700 py-3 px-6 hover:bg-purple-600 transition-colors">
+                  Commander maintenant
+                </button>
+              </Link>
               <button className="text-purple-700 rounded-full text-sm font-semibold border-2 border-purple-700 py-3 px-6 hover:bg-purple-50 transition-colors">
                 Découvrir la gamme
               </button>
@@ -217,9 +220,11 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <button className="mt-6 px-5 py-2.5 border bg-purple-700 text-white rounded-full text-sm font-semibold hover:bg-purple-600 transition-all">
-                Commander ce produit
-              </button>
+              <Link href="/Ride">
+                <button className="mt-6 px-5 py-2.5 border bg-purple-700 text-white rounded-full text-sm font-semibold hover:bg-purple-600 transition-all">
+                  Commander ce produit
+                </button>
+              </Link>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center items-center">
               <Image width={350} height={350} src="/assets/aaaaaa.png" alt="FortiPro Product" className="w-full max-w-[240px] sm:max-w-[280px] md:max-w-[600px] h-auto" />
@@ -257,9 +262,11 @@ export default function Home() {
             Commandez votre premier pack FortiPro et découvrez la différence d&#39;une nutrition optimisée.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 mt-6">
-            <button className="text-white rounded-full text-sm md:text-base font-bold bg-purple-700 py-2.5 px-6 hover:bg-purple-600 transition-colors">
-              Commander maintenant
-            </button>
+            <Link href="/Ride">
+              <button className="text-white rounded-full text-sm md:text-base font-bold bg-purple-700 py-2.5 px-6 hover:bg-purple-600 transition-colors">
+                Commander maintenant
+              </button>
+            </Link>
             <button className="text-white rounded-full text-sm md:text-base font-bold border-2 border-white py-2.5 px-6 hover:bg-white hover:text-gray-900 transition-colors">
               Voir les avis clients
             </button>
