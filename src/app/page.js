@@ -130,9 +130,7 @@ export default function Home() {
                   Commander maintenant
                 </button>
               </Link>
-              <button className="text-purple-700 rounded-full text-sm font-semibold border-2 border-purple-700 py-3 px-6 hover:bg-purple-50 transition-colors">
-                Découvrir la gamme
-              </button>
+
             </div>
           </div>
           <div className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0">

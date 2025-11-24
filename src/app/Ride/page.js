@@ -216,6 +216,22 @@ export default function FortiProSales() {
             </p>
           </div>
 
+          {/* Promotional Banner */}
+          <div className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 rounded-2xl p-6 shadow-2xl border-2 border-amber-300 animate-pulse px-2 sm:px-6">
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzBoNHYzaC00em0wIDRoNHYzaC00em0tNCA0aDR2M2gtNHptMCA0aDR2M2gtNHptLTQtOGg0djNoLTR6bTAtNGg0djNoLTR6bS00IDBoNHYzaC00em0wLTRoNHYzaC00em00LTRoNHYzaC00em00IDBoNHYzaC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
+            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-center sm:text-left">
+                <div className="text-white text-sm font-semibold tracking-wider mb-1">🎉 OFFRE SPÉCIALE</div>
+                <div className="text-white text-xl sm:text-2xl font-bold leading-tight">
+                  Achetez 1 carton, recevez 1 flacon GRATUIT !
+                </div>
+              </div>
+              <div className="flex-shrink-0 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border-2 border-white/40">
+                <span className="text-white font-bold text-lg whitespace-nowrap">Offre limitée</span>
+              </div>
+            </div>
+          </div>
+
           {/* Features */}
           <div className="flex flex-wrap gap-3 px-2 sm:px-0">
             {['Haute teneur en protéines', 'Enrichi en vitamines', 'Facile à digérer'].map((feature, index) => (
@@ -238,7 +254,8 @@ export default function FortiProSales() {
               <div className="space-y-2">
                 <label className="text-white font-medium text-sm">Nom *</label>
                 <div className="relative group">
-  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10 group-focus-within:text-purple-400 transition-colors" />                  <input
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 z-10 group-focus-within:text-purple-400 transition-colors" />
+                  <input
                     type="text"
                     name="nom"
                     placeholder="Votre nom"
@@ -347,7 +364,10 @@ export default function FortiProSales() {
                   >
                     <div className="flex items-center space-x-3 mb-3 sm:mb-0">
                       <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${flavour.color}`} />
-                      <span className="text-white font-medium">{flavour.name}</span>
+                      <div>
+                        <span className="text-white font-medium block">{flavour.name}</span>
+                        <span className="text-purple-300 text-sm">2800 DA / Carton de 4 flacons</span>
+                      </div>
                     </div>
                     <div className="flex items-center space-x-3 justify-center">
                       <button
