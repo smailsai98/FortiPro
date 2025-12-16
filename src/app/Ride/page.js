@@ -450,26 +450,7 @@ export default function FortiProSales() {
 
       {/* Bottom Stats */}
       <footer className="relative z-10 p-6 max-w-7xl mx-auto px-2 sm:px-6">
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div className="space-y-2 group cursor-pointer">
-              <div className="text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-300">300</div>
-              <div className="text-sm text-purple-300">Kcal/bouteille</div>
-            </div>
-            <div className="space-y-2 group cursor-pointer">
-              <div className="text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-300">20g</div>
-              <div className="text-sm text-purple-300">Protéines</div>
-            </div>
-            <div className="space-y-2 group cursor-pointer">
-              <div className="text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-300">100%</div>
-              <div className="text-sm text-purple-300">Vitamines</div>
-            </div>
-            <div className="space-y-2 group cursor-pointer">
-              <div className="text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-300">200ml</div>
-              <div className="text-sm text-purple-300">Format</div>
-            </div>
-          </div>
-        </div>
+      
       </footer>
 
       {/* Order Summary Modal */}

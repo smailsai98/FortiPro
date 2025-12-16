@@ -30,7 +30,7 @@ export default function Home() {
       description: "Notre formule originale, riche en protéines de haute qualité pour soutenir votre quotidien actif.",
       cards: [
         {title: "22 de protéines", content: "Chaque portion vous apporte 22g de protéines complètes pour la récupération musculaire."},
-        {title: "Faible en sucre", content: "Seulement 2g de sucre par portion, idéal pour une alimentation équilibrée."},
+        {title: "Riche en Vitamines", content: "Fortipro est enrichi en vitamines essentielles pour booster votre énergie, combattre la fatigue et soutenir votre système immunitaire au quotidien."},
         {title: "Digestion facile", content: "Formulé pour une absorption optimale sans inconfort digestif."}
       ]
     },
@@ -206,7 +206,6 @@ export default function Home() {
             {[
               { icon: Zap, text: "Prêt en 10 secondes" },
               { icon: Shield, text: "Qualité certifiée" },
-              { icon: Leaf, text: "Ingrédients naturels" },
               { icon: FlaskConical, text: "Testé en laboratoire" }
             ].map((item, i) => (
               <motion.div 
