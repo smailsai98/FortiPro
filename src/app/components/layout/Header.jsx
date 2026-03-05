@@ -41,13 +41,19 @@ function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center space-x-6">
-              <Link 
-                href="/Ride" 
+              <Link
+                href="/Nutriflan"
                 className="text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
               >
-                Commander
+                Nutriflan
               </Link>
-            
+              <Link
+                href="/Ride"
+                className="text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
+              >
+                Commander FortiPro
+              </Link>
+
             </nav>
 
             {/* Desktop Badge */}
@@ -56,7 +62,7 @@ function Header() {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
+            <button
               className="lg:hidden p-2 text-purple-800 hover:text-purple-600 transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
@@ -72,13 +78,19 @@ function Header() {
         <nav className="bg-white border-t border-gray-100 shadow-lg">
           <div className="w-full flex justify-center">
             <div className="w-full max-w-3xl px-4 sm:px-6 py-4 space-y-1">
-              <Link 
-                href="/Ride" 
+              <Link
+                href="/Nutriflan"
                 className="block py-2 text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
               >
-                Commander
+                Nutriflan
               </Link>
-              
+              <Link
+                href="/Ride"
+                className="block py-2 text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
+              >
+                Commander FortiPro
+              </Link>
+
               <div className="pt-3 mt-3 border-t border-gray-100">
                 <Badge text="English" color="bg-purple-700" />
               </div>
@@ -94,11 +106,11 @@ export default Header;
 
 const MobileDropdown = ({ title, items = [] }) => {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <div className="py-1">
-      <button 
-        onClick={() => setOpen(!open)} 
+      <button
+        onClick={() => setOpen(!open)}
         className="flex items-center justify-between w-full py-2 text-sm font-bold text-purple-800 hover:text-purple-600 transition-colors"
       >
         {title}
@@ -108,8 +120,8 @@ const MobileDropdown = ({ title, items = [] }) => {
         <ul className="pl-4 py-1 space-y-1">
           {items.map((item, i) => (
             <li key={i}>
-              <Link 
-                href="/#" 
+              <Link
+                href="/#"
                 className="block py-1.5 text-sm text-gray-600 hover:text-purple-600 transition-colors"
               >
                 {item}
