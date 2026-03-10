@@ -12,7 +12,7 @@ function Footer() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-          
+
           {/* Brand & Contact */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="block mb-4">
@@ -28,7 +28,7 @@ function Footer() {
               </a>
               <a href="tel:+213555123456" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="w-4 h-4" />
-                +213 560 70 12
+                +213 542 36 40 01
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />

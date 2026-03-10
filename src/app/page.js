@@ -217,7 +217,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-gray-800"
             >
-              La nutrition protéinée
+              La nutrition Hyper protéinée
             </motion.h1>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
